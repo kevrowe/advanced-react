@@ -7,6 +7,12 @@ const mutations = {
     );
 
     return item;
+  },
+  async deleteItem(parent, args, context, info) {
+    const where = { id: args.id };
+    const item = context.db.query.items({ where }, `{id title}`);
+    // TODO: Check if we own it
+    return context.db.mutation.deleteItem({ where }, info);
   }
 };
 
