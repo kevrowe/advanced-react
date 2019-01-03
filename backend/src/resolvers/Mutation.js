@@ -13,6 +13,16 @@ const mutations = {
     const item = context.db.query.items({ where }, `{id title}`);
     // TODO: Check if we own it
     return context.db.mutation.deleteItem({ where }, info);
+  },
+  async updateItem(parent, args, context, info) {
+    const updates = { ...args };
+    delete updates.id;
+    return await context.db.mutation.updateItem({
+      data: updates,
+      where: {
+        id: args.id
+      }
+    });
   }
 };
 
