@@ -56,7 +56,6 @@ class UpdateItem extends Component {
       }
     });
 
-    alert(JSON.stringify(response.data));
     Router.push({
       pathname: "/item",
       query: { id: response.data.updateItem.id }
@@ -116,7 +115,7 @@ class UpdateItem extends Component {
                         required
                       />
                     </label>
-                    <button type="submit">Save</button>
+                    <button type="submit">Sav{loading ? "ing" : "e"}</button>
                   </fieldset>
                 </Form>
               )}
